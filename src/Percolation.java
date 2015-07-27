@@ -64,9 +64,10 @@ public class Percolation {
 	}
 	
 	private void unionWithAdjacentOpenSites(int i, int j) {
-		if ((i - 1 > 0) && isOpen(i - 1, j)) unionDs.union(buildDsIndex(i, j), buildDsIndex(i - 1, j));
-		if ((i + 1 <= N) && isOpen(i + 1, j)) unionDs.union(buildDsIndex(i, j), buildDsIndex(i + 1, j));
-		if ((j - 1 > 0) && isOpen(i, j - 1)) unionDs.union(buildDsIndex(i, j), buildDsIndex(i, j - 1));
-		if ((j + 1 <= N) && isOpen(i, j + 1)) unionDs.union(buildDsIndex(i, j), buildDsIndex(i, j + 1));
+		int index = buildDsIndex(i, j);
+		if ((i - 1 > 0) && isOpen(i - 1, j)) unionDs.union(index, buildDsIndex(i - 1, j));
+		if ((i + 1 <= N) && isOpen(i + 1, j)) unionDs.union(index, buildDsIndex(i + 1, j));
+		if ((j - 1 > 0) && isOpen(i, j - 1)) unionDs.union(index, buildDsIndex(i, j - 1));
+		if ((j + 1 <= N) && isOpen(i, j + 1)) unionDs.union(index, buildDsIndex(i, j + 1));
 	}
 }
